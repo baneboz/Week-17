@@ -1,17 +1,7 @@
 "use strict";
 
-////// The following exercises needs to be done on 2 ways:
-// 1) using classes,
-// 2) using constructor functions.
-
-//////////// 1.
-// a) Create a Car class with properties (brand, model, motion) and methods (check motion, accelerate, break).
-// Check motion method should check the speed and returns if the car are in move or not (speed is greater than zero).
-// Accelerate method should increase the speed for some number we provide.
-// Break method should decrease the speed for the number we provided (pay attention if the speed is negative number after decreasing).
-// b) Add the status method that displays all current data for the car (model, brand, motion state, speed => something like "Ford Mondeo is running at 150km/h, car is moving").
-// c) Add a new method to stop the car immediately (set the speed to 0). It doesn't need parameters.
-// d) Create a 3 car objects and test it!
+///////////
+//// Car
 class CarClass {
   constructor(brand, model, motion) {
     this.brand = brand;
@@ -83,14 +73,9 @@ const kec = new CarClass("Zastava", "101", 30);
 kec.checkMotion();
 kec.accelerate();
 kec.carStatus();
-// 2.
-// a)Create a TV class with properties like brand, channel and volume. Specify brand in a constructor parameter. Channel should be 1 by default. Volume should be 50 by default.
-// b) Add methods to increase and decrease volume. Volume can't never be below 0 or above 100.
-// c) Add a method to set the channel. Let's say the TV has only 50 channels so if you try to set channel 60 the TV will stay at the current channel.
-// d) Add a method to reset TV so it goes back to channel 1 and volume 50. (Hint: consider using it from the constructor).
-// e) It's useful to write a status, that returns info about the TV status like: "Panasonic at channel 8, volume 75".
-// f) Create a TV object and test it!
 
+///////////
+//// TV
 class TVClass {
   constructor(brand) {
     this.brand = brand;
@@ -145,3 +130,146 @@ tv.setChannel(22);
 tv.printStatus();
 tv.tvReset();
 tv.printStatus();
+
+///////////
+//// Book
+class Book {
+  constructor(title, author, copyrightDate, isbn, pagesNum, numCheckedOut) {
+    this.title = title;
+    this.author = author;
+    this.copyrightDate = copyrightDate;
+    this.isbn = isbn;
+    this.pagesNum = pagesNum;
+    this.numCheckedOut = numCheckedOut;
+    this.discarded = false;
+  }
+  isDiscarded() {
+    if (
+      this.constructor.name === "Manual" &&
+      Date.now() - Date.parse(this.copyrightDate) > 157680000000
+    )
+      this.discarded = true;
+
+    if (this.constructor.name === "Novel" && this.numCheckedOut > 100)
+      this.discarded = true;
+  }
+}
+class Manual extends Book {
+  constructor(title, author, copyrightDate, isbn, pagesNum, numCheckedOut) {
+    super(title, author, copyrightDate, isbn, pagesNum, numCheckedOut);
+  }
+}
+
+class Novel extends Book {
+  constructor(title, author, copyrightDate, isbn, pagesNum, numCheckedOut) {
+    super(title, author, copyrightDate, isbn, pagesNum, numCheckedOut);
+  }
+  updateNumCheckedOut() {
+    this.numCheckedOut++;
+  }
+}
+
+const man = new Manual(
+  "Manual Title",
+  "Manual Author",
+  "Dec 25 2000",
+  12345,
+  230,
+  111
+);
+
+const nov = new Novel(
+  "Novel Title",
+  "Novel Author",
+  "Dec 25 2020",
+  54321,
+  178,
+  99
+);
+nov.updateNumCheckedOut();
+nov.updateNumCheckedOut();
+nov.updateNumCheckedOut();
+nov.updateNumCheckedOut();
+nov.updateNumCheckedOut();
+nov.isDiscarded();
+
+///////////
+//// Calculator
+// StackCalc("6 30 /") ➞ 5
+class StackCalc {}
+
+///////////
+//// CoffeeShop
+class CoffeeShop {
+  constructor(name, menu) {
+    this.name = name;
+    this.menu = menu;
+    this.orders = [];
+  }
+  addOrder(nameOfMenu) {
+    const order = this.menu.find(el => nameOfMenu === el.menuName);
+    if (order) {
+      this.orders.push(order);
+      return "Order added!";
+    } else return "This item is currently unavailable!";
+  }
+
+  fulfillOrder() {
+    if (this.orders.length > 0) {
+      const removedOrder = this.orders.shift();
+      return `The ${removedOrder.menuName} is ready!`;
+    } else return "All orders have been fulfilled!";
+  }
+  listOrders() {
+    if (this.orders.length > 0) {
+      const ordersName = [];
+      this.orders.forEach(el => ordersName.push(el.menuName));
+      return ordersName;
+    } else return [];
+  }
+  dueAmount() {
+    if (this.orders.length > 0) {
+      const totalPrice = this.orders.reduce(
+        (acc, curr) => acc + curr.menuPrice,
+        0
+      );
+      return totalPrice;
+    } else return 0.0;
+  }
+  cheapestItem() {
+    let min = this.menu[0].menuPrice;
+    let cheapest = this.menu[0].menuName;
+
+    this.menu.forEach(el => {
+      if (el.menuPrice < min) {
+        min = el.menuPrice;
+        cheapest = el.menuName;
+      }
+    });
+    return cheapest;
+  }
+  drinksOnly() {
+    const drinks = [];
+    this.menu.forEach(el => {
+      if (el.menuType === "drink") drinks.push(el.menuName);
+    });
+    return drinks;
+  }
+  foodOnly() {
+    const food = [];
+    this.menu.forEach(el => {
+      if (el.menuType === "food") food.push(el.menuName);
+    });
+    return food;
+  }
+}
+
+const shop = new CoffeeShop("Bane shop", [
+  { menuName: "orange juice", menuType: "drink", menuPrice: 2 },
+  { menuName: "lemonade", menuType: "drink", menuPrice: 1.4 },
+  { menuName: "hot chocolate", menuType: "drink", menuPrice: 2.5 },
+  { menuName: "iced coffee", menuType: "drink", menuPrice: 2.78 },
+  { menuName: "tuna sandwich", menuType: "food", menuPrice: 4.2 },
+  { menuName: "bacon and egg", menuType: "food", menuPrice: 4.5 },
+  { menuName: "hamburger", menuType: "food", menuPrice: 5.25 },
+]);
