@@ -195,7 +195,7 @@ nov.isDiscarded();
 
 ///////////
 //// Calculator
-// StackCalc("6 30 /") ➞ 5
+
 class StackCalc {}
 
 ///////////

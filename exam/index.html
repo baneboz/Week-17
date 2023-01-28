@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 17 | Exam Statistics</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script defer src="js/subject.js"></script>
+    <script defer src="js/student.js"></script>
+    <script defer src="js/exam.js"></script>
+    <script defer src="js/form.js"></script>
+    <script defer src="js/app.js"></script>
+  </head>
+  <body>
+    <h1>Exam statistics</h1>
+
+    <main class="app">
+      <section class="exams__statistics">
+        <h2>Exam statistics June</h2>
+
+        <p class="statistics__total">Total students: <span>0</span></p>
+        <div class="statistics statistics--passed">
+          <p>Passed</p>
+          <p class="statistics__num">0</p>
+          <p class="statistics__perc" style="visibility: hidden">0%</p>
+        </div>
+        <div class="statistics statistics--failed">
+          <p>Failed</p>
+          <p class="statistics__num">0</p>
+          <p class="statistics__perc">0%</p>
+        </div>
+      </section>
+
+      <section class="exams__inputs">
+        <form class="form">
+          <select name="subject" id="subject" required>
+            <option value="JS">JavaScript</option>
+            <option value="WEB">WEB</option>
+            <option value="SQL">SQL</option>
+          </select>
+
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name surname"
+            required
+          />
+          <input
+            type="number"
+            name="grade"
+            id="grade"
+            placeholder="grade"
+            min="1"
+            max="10"
+            required
+          />
+          <button type="submit" class="form__submit">Add</button>
+        </form>
+      </section>
+
+      <section class="exams__display">
+        <section class="exams__section exams__section--passed">
+          <h2 class="exams__title">Passed</h2>
+          <!-- <div class="exams__row">
+            <p class="exams__name">JS - Branko Bozovic</p>
+            <p class="exams__grade">10</p>
+          </div>
+          <div class="exams__row">
+            <p class="exams__name">WEB - Pera Peric</p>
+            <p class="exams__grade">5</p>
+          </div>
+          <div class="exams__row">
+            <p class="exams__name">WEB - Pera Peric</p>
+            <p class="exams__grade">5</p>
+          </div> -->
+        </section>
+
+        <section class="exams__section exams__section--failed">
+          <h2 class="exams__title">Failed</h2>
+
+          <!-- <div class="exams__row">
+            <p class="exams__name">WEB - Pera Peric</p>
+            <p class="exams__grade">5</p>
+          </div>
+          <div class="exams__row">
+            <p class="exams__name">WEB - Pera Peric</p>
+            <p class="exams__grade">5</p>
+          </div>
+          <div class="exams__row">
+            <p class="exams__name">WEB - Pera Peric</p>
+            <p class="exams__grade">5</p>
+          </div> -->
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
