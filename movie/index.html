@@ -5,8 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Week 17 | Movie Festival</title>
-    <link rel="stylesheet" href="main.css" />
-    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <script defer src="js/entities.js"></script>
+    <script defer src="js/form.js"></script>
   </head>
-  <body></body>
+  <body>
+    <h1>Movie festival</h1>
+    <main class="app">
+      <p>Please fill in the form</p>
+      <form class="form__movie">
+        <fieldset>
+          <legend>Movie</legend>
+
+          <div class="movie__title">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Title"
+              required
+            />
+          </div>
+
+          <div class="movie_length">
+            <label for="length">Length (min)</label>
+            <input
+              type="number"
+              name="length"
+              id="length"
+              placeholder="Length in min"
+              required
+            />
+          </div>
+
+          <select name="genre" id="genre" required>
+            <option style="display: none">-</option>
+            <option value="drama">Drama</option>
+            <option value="comedy">Comedy</option>
+            <option value="action">Action</option>
+            <option value="fantasy">Fantasy</option>
+          </select>
+
+          <p class="error hidden">All fields are mandatory</p>
+
+          <input
+            type="button"
+            class="btn btn__create-movie"
+            value="Create movie"
+          />
+        </fieldset>
+      </form>
+
+      <form class="form__program">
+        <fieldset>
+          <legend>Program</legend>
+          <div class="program__date">
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" />
+          </div>
+          <input
+            type="button"
+            class="btn btn__create-program"
+            value="Create program"
+          />
+
+          <select name="movie" id="movie">
+            <option style="display: none">-</option>
+            <option value="film1">Film 1</option>
+            <option value="film2">Film 2</option>
+          </select>
+          <select name="program" id="program">
+            <option style="display: none">-</option>
+            <option value="program1">Program 1</option>
+            <option value="program2">Program 2</option>
+          </select>
+          <input
+            type="button"
+            class="btn btn__add-movie"
+            value="Add movie to program"
+          />
+        </fieldset>
+      </form>
+    </main>
+  </body>
 </html>

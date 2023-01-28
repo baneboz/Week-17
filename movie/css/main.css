@@ -1,0 +1,63 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*************
+**** app */
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+}
+h1 {
+  margin-block: 1em;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.app {
+  border: 1px solid black;
+  margin: 0 1em;
+  padding: 0.5em;
+}
+label,
+input,
+select {
+  display: block;
+  width: 100%;
+  margin-block: 0.5em;
+  font: inherit;
+}
+select,
+input {
+  padding: 0.25em 1em;
+}
+.btn {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+
+.form__program {
+  margin-top: 1em;
+}
+.error {
+  color: red;
+}
+.hidden {
+  display: none;
+}
