@@ -12,3 +12,26 @@ class Movie {
     return data;
   }
 }
+
+class Program {
+  constructor(date) {
+    this.date = date;
+    this.listOfMovies = [];
+  }
+
+  addMovie(movie) {
+    this.listOfMovies.push(movie);
+  }
+  getData() {
+    let programDuration = 0;
+    let movies = "";
+    this.listOfMovies.forEach(movie => {
+      programDuration += +movie.length.slice(0, -3);
+      movies += `\t\t${movie.title}, ${
+        movie.length
+      }, ${movie.genre.getData()}\n`;
+    });
+    const data = `${this.date}, program duration ${programDuration}min\n${movies}`;
+    return data;
+  }
+}
